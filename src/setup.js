@@ -22,13 +22,18 @@ try {
   }
 
 } catch(err) {
-  Object.defineProperty(global, 'localStorage', {
-    value: new LocalStorage(jest),
-    writable: false
-  });
-  Object.defineProperty(global, 'sessionStorage', {
-    value: new LocalStorage(jest),
-    writable: false
-  });
+  if(typeof global.localStorage !== "undefined") {
+    Object.defineProperty(global, 'localStorage', {
+      value: new LocalStorage(jest),
+      writable: false
+    });
+  } 
+  if(typeof global.sessionStorage !== "undefined") {
+    Object.defineProperty(global, 'sessionStorage', {
+      value: new LocalStorage(jest),
+      writable: false
+    });
+  }
+
 }
 
