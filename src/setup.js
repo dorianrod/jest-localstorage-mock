@@ -1,5 +1,6 @@
 import { LocalStorage } from './localstorage';
 
+window.__localStorage = window.localStorage;
 
 try {
 
